@@ -16,4 +16,19 @@ viewpost($postname,$postauthor); //views a post
 deletepost($postname,$user,$pwd); //deletes a post
 commentpost($user,$pwd,$postname,$postauthor,$comment); //comments on a post
 readcomments($postname,$author); //reads comments on post
+sortposts(); //sorts posts, output is like
+/*
+Array(    [0] => Array
+        (
+            [0] => i
+            [1] => i
+            [2] => txt
+        )
+
+    [1] => Array
+        (
+            [0] => 
+        )
+
+)*/
 ```
