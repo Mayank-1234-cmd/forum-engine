@@ -2,7 +2,7 @@
 
 # forum-engine
 
-a 'forum engine', no sql used
+a forum engine
 
 ```php
 require 'lib.php';
