@@ -118,5 +118,15 @@ class forumengine {
      }
      print_r($output);
    }
+   function searchposts($keyword) {
+     $sanitkeyword=escapeshellarg($keyword);
+     $posts=explode("\n",shell_exec("ls -r posts | grep \\.txt | grep $sanitkeyword"));
+     $output=array();
+     foreach ($posts as &$post) {
+       $post=explode(".",$post);
+       array_push($output,$post);
+     }
+     print_r($output);
+   }
    //end posts
 }
