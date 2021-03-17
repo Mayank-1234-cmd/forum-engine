@@ -22,8 +22,8 @@ sortposts(); //sorts posts, output is like
 Array(
     [0] => Array
         (
-            [0] => i
-            [1] => i
+            [0] => base64 encoded name of post
+            [1] => author of post
             [2] => txt
         )
 
