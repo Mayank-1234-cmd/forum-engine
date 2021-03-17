@@ -6,7 +6,8 @@ a 'forum engine', no sql used
 
 ```php
 require 'lib.php';
-init();
+init(); //only used on first try, like a setup or something, makes all dirs
+        //using twice deletes everything in the folders (i think)
 
 newuser($username,$password); //creates new user
 user_exists($username); // check if user exists
