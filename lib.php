@@ -5,10 +5,8 @@
 //stackoverflow
 class forumengine {
    function clean($string) {
-      $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-      $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-
-      return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+      $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+      return preg_replace('/-+/', '', $string);
    }
 
    function startsWith( $haystack, $needle ) {
@@ -61,6 +59,16 @@ class forumengine {
        return true;
      } else {
        return false;
+     }
+   }
+   function userchangepwd($user,$newpwd,$oldpwd) {
+     $pwdh=hash("sha512",$newpwd);
+     $cluser=clean($user);
+     if (user_exists_wpwd($user,$oldpwd)) {
+       file_put_contents("passwordmgr/passwords/$cluser.$pwdh.txt","");
+       file_put_contents("passwordmgr/users/$cluser","");
+     } else {
+       ;
      }
    }
    //end users
