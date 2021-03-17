@@ -86,7 +86,6 @@ function deletepost($postname,$user,$pwd) {
     return false;
   }
 }
-// last one - commenting on post
 function commentpost($user,$pwd,$postname,$postauthor,$comment) {
   if (user_exists_wpwd($user,$pwd)) {
     $fdir="post-comments/".base64_encode($postname).".".clean($postauthor).".txt";
@@ -97,9 +96,17 @@ function commentpost($user,$pwd,$postname,$postauthor,$comment) {
     return false;
   }
 }
-
 function readcomments($postname,$author) {
   $fdir="post-comments/".base64_encode($postname).".".clean($author).".txt";
   return file_get_contents($fdir);
+}
+function sortposts() {
+  $output=array();
+  $o1=explode("\n",shell_exec("ls posts -t | grep \\.txt"));
+  foreach ($o1 as &$o2) {
+    $o3=explode(".",$o2);
+    array_push($output,$o3);
+  }
+  print_r($output);
 }
 //end posts
