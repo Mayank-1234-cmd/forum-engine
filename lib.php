@@ -129,4 +129,39 @@ class forumengine {
      print_r($output);
    }
    //end posts
+   //start notifs - NOTE: you have to manually edit .htacess to restrict directory /path/to/engine/notifs/*
+   //               due to security issues that idk how to fix without a db
+   function notify($user,$pwd,$msg) {
+     $cluser=clean($user);
+     $pwdh=hash('sha512',$pwd);
+     $file="notifs/".$cluser.".".$pwdh.".txt";
+     if (user_exists_wpwd($user,$pwd)) {
+       file_put_contents($file,"$msg\n".file_get_contents($file));
+       return true;
+     } else {
+       return false;
+     }
+   }
+   function clearnotifs($user,$pwd) {
+     $cluser=clean($user);
+     $pwdh=hash('sha512',$pwd);
+     $file="notifs/".$cluser.".".$pwdh.".txt";
+     if (user_exists_wpwd($user,$pwd)) {
+       file_put_contents($file,"");
+       return true;
+     } else {
+       return false;
+     }
+   }
+   function getnotifs($user,$pwd) {
+     $cluser=clean($user);
+     $pwdh=hash('sha512',$pwd);
+     $file="notifs/".$cluser.".".$pwdh.".txt";
+     if (user_exists_wpwd($user,$pwd)) {
+       return file_get_contents($file);
+     } else {
+       return false;
+     }
+   }
+   //end notifs
 }
