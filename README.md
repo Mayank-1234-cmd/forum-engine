@@ -22,7 +22,7 @@ $forum->readcomments($postname,$author);                        //reads comments
 $forum->sortposts();                                            //sorts posts, output is at comment #2
 $forum->searchposts($keyword);                                  //searches posts, output is at comment #1
 #1 output
-#Array(base64 enc title of post,author of post,txt),Array())
+#Array(Array(base64 enc title of post,author of post,txt),Array())
 #2 output
 #Array(Array(base64 encoded name of post,author of post,txt),Array()
 
