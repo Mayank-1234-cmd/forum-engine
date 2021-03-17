@@ -19,20 +19,11 @@ $forum->viewpost($postname,$postauthor);                        //views a post
 $forum->deletepost($postname,$user,$pwd);                       //deletes a post
 $forum->commentpost($user,$pwd,$postname,$postauthor,$comment); //comments on a post
 $forum->readcomments($postname,$author);                        //reads comments on post
-$forum->sortposts();                                            //sorts posts, output is like
-/*
-Array(
-    [0] => Array
-        (
-            [0] => base64 encoded name of post
-            [1] => author of post
-            [2] => txt
-        )
+$forum->sortposts();                                            //sorts posts, output is at comment #2
+$forum->searchposts($keyword);                                  //searches posts, output is at comment #1
+#1 output
+#Array(base64 enc title of post,author of post,txt),Array())
+#2 output
+#Array(Array(base64 encoded name of post,author of post,txt),Array()
 
-    [1] => Array
-        (
-            [0] => 
-        )
-
-)*/
 ```
