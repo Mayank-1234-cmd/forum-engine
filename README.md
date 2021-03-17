@@ -4,6 +4,8 @@
 
 a forum engine
 
+NOTICE: In .htacess, you have to manually restrict /path/to/engine/notifs/* because of a security issue.
+
 ```php
 require 'lib.php';
 $forum=new forumengine();
@@ -21,6 +23,9 @@ $forum->commentpost($user,$pwd,$postname,$postauthor,$comment); //comments on a 
 $forum->readcomments($postname,$author);                        //reads comments on post
 $forum->sortposts();                                            //sorts posts, output is at comment #2
 $forum->searchposts($keyword);                                  //searches posts, output is at comment #1
+$forum->notify($user,$password,$message);                       //notify user a msg
+$forum->clearnotifs($user,$password);                           //clear notifs
+$forum->getnotifs($user,$password);                             //read notifs
 #1 output
 #Array(Array(base64 enc title of post,author of post,txt),Array())
 #2 output
