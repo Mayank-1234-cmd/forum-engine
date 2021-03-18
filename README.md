@@ -6,8 +6,10 @@ a forum engine
 
 NOTICE: In .htacess, you have to manually restrict /path/to/engine/notifs/* because of a security issue.
 
+If you're using attrs for private info too, then restrict /path/to/engine/userattrs/* and /path/to/engine/attrs/*. 
+
 ```php
-require 'lib.php';
+require '/path/to/engine/lib.php';
 $forum=new forumengine();
 $forum->init(); //only used on first try, like a setup or something, makes all dirs
         //using twice deletes everything in the folders (i think)
