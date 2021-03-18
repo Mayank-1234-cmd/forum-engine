@@ -26,9 +26,20 @@ $forum->searchposts($keyword);                                  //searches posts
 $forum->notify($user,$password,$message);                       //notify user a msg
 $forum->clearnotifs($user,$password);                           //clear notifs
 $forum->getnotifs($user,$password);                             //read notifs
+$forum->setpostattr($postname,$postauthor,$attrname,$attrvalue);//set post attr
+$forum->readpostattr($postname,$postauthor,$attrname);          //read post attr
+$forum->setuserattr($username,$password,$attrname,$attrvalue);  //set user attr
+$forum->readuserattr($username,$password,$attrname);            //read user attr
 #1 output
 #Array(Array(base64 enc title of post,author of post,txt),Array())
 #2 output
 #Array(Array(base64 encoded name of post,author of post,txt),Array()
-
+#post attr usage example
+function likePost($postname,$postauthor) {
+  $likes=$forum->readpostattr($postname,$postauthor,"likes");
+  $forum->setpostattr($postname,$postauthor,"likes",$likes+1);
+}
+function getLikes($postname,$postauthor) {
+  return $forum->getpostattr($postname,$postauthor,"likes");
+}
 ```
