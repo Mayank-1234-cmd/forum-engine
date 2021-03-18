@@ -192,9 +192,8 @@ class forumengine {
    function setuserattr($username,$password,$attrname,$attrvalue) {
      $cluser=clean($username);
      // $pwdh=hash('sha512',$pwd);
-     $titleb64=base64_encode($postname);
      if (user_exists_wpwd($cluser,$password)) {
-       file_put_contents("userattrs/$username.$attrname.txt",$attrvalue);
+       file_put_contents("userattrs/$cluser.$attrname.txt",$attrvalue);
        return true;
      } else {
        return false;
@@ -203,9 +202,8 @@ class forumengine {
    function readuserattr($username,$password,$attrname) {
      $cluser=clean($username);
      // $pwdh=hash('sha512',$pwd);
-     $titleb64=base64_encode($postname);
      if (user_exists_wpwd($cluser,$password)) {
-       return file_get_contents("userattrs/$username.$attrname.txt");
+       return file_get_contents("userattrs/$cluser.$attrname.txt");
        // return true;
      } else {
        return false;
