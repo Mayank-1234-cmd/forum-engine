@@ -29,6 +29,9 @@ class forumengine {
      mkdir("passwordmgr/users");
      mkdir("post-comments");
      mkdir("posts");
+     mkdir("notifs");
+     mkdir("attrs");
+     mkdir("userattrs");
      return true;
    }
    //end init
@@ -164,4 +167,49 @@ class forumengine {
      }
    }
    //end notifs
+   //start attrs
+
+   function setpostattr($postname,$postauthor,$attrname,$attrvalue) {
+     $cluser=clean($postauthor);
+     // $pwdh=hash('sha512',$pwd);
+     $titleb64=base64_encode($postname);
+     // $file="notifs/".$cluser.".".$pwdh.".txt";
+     if (user_exists($postauthor)) {
+       file_put_contents("attrs/$titleb64.$postauthor.$attrname.txt",$attrvalue);
+     }
+   }
+   function readpostattr($postname,$postauthor,$attrname,$attrvalue) {
+     $cluser=clean($postauthor);
+     // $pwdh=hash('sha512',$pwd);
+     $titleb64=base64_encode($postname);
+     // $file="notifs/".$cluser.".".$pwdh.".txt";
+     if (user_exists($postauthor)) {
+       return file_get_contents("attrs/$titleb64.$postauthor.$attrname.txt",$attrvalue);
+     } else {
+       return false;
+     }
+   }
+   function setuserattr($username,$password,$attrname,$attrvalue) {
+     $cluser=clean($username);
+     // $pwdh=hash('sha512',$pwd);
+     $titleb64=base64_encode($postname);
+     if (user_exists_wpwd($cluser,$password)) {
+       file_put_contents("userattrs/$username.$attrname.txt",$attrvalue);
+       return true;
+     } else {
+       return false;
+     }
+   }
+   function readuserattr($username,$password,$attrname,$attrvalue) {
+     $cluser=clean($username);
+     // $pwdh=hash('sha512',$pwd);
+     $titleb64=base64_encode($postname);
+     if (user_exists_wpwd($cluser,$password)) {
+       return file_get_contents("userattrs/$username.$attrname.txt",$attrvalue);
+       // return true;
+     } else {
+       return false;
+     }
+   }
+   //end attrs
 }
