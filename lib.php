@@ -175,7 +175,7 @@ class forumengine {
      $titleb64=base64_encode($postname);
      // $file="notifs/".$cluser.".".$pwdh.".txt";
      if (user_exists($postauthor)) {
-       file_put_contents("attrs/$titleb64.$postauthor.$attrname.txt",$attrvalue);
+       file_put_contents("attrs/$titleb64.$cluser.$attrname.txt",$attrvalue);
      }
    }
    function readpostattr($postname,$postauthor,$attrname) {
@@ -184,7 +184,7 @@ class forumengine {
      $titleb64=base64_encode($postname);
      // $file="notifs/".$cluser.".".$pwdh.".txt";
      if (user_exists($postauthor)) {
-       return file_get_contents("attrs/$titleb64.$postauthor.$attrname.txt");
+       return file_get_contents("attrs/$titleb64.$cluser.$attrname.txt");
      } else {
        return false;
      }
