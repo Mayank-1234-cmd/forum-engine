@@ -178,13 +178,13 @@ class forumengine {
        file_put_contents("attrs/$titleb64.$postauthor.$attrname.txt",$attrvalue);
      }
    }
-   function readpostattr($postname,$postauthor,$attrname,$attrvalue) {
+   function readpostattr($postname,$postauthor,$attrname) {
      $cluser=clean($postauthor);
      // $pwdh=hash('sha512',$pwd);
      $titleb64=base64_encode($postname);
      // $file="notifs/".$cluser.".".$pwdh.".txt";
      if (user_exists($postauthor)) {
-       return file_get_contents("attrs/$titleb64.$postauthor.$attrname.txt",$attrvalue);
+       return file_get_contents("attrs/$titleb64.$postauthor.$attrname.txt");
      } else {
        return false;
      }
@@ -200,12 +200,12 @@ class forumengine {
        return false;
      }
    }
-   function readuserattr($username,$password,$attrname,$attrvalue) {
+   function readuserattr($username,$password,$attrname) {
      $cluser=clean($username);
      // $pwdh=hash('sha512',$pwd);
      $titleb64=base64_encode($postname);
      if (user_exists_wpwd($cluser,$password)) {
-       return file_get_contents("userattrs/$username.$attrname.txt",$attrvalue);
+       return file_get_contents("userattrs/$username.$attrname.txt");
        // return true;
      } else {
        return false;
